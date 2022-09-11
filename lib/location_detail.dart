@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'styles/styles.dart';
 import 'mocks/mock_location.dart';
 import 'models/location.dart';
-import 'styles/styles.dart';
 
 class LocationDetail extends StatelessWidget {
   final int locationID;

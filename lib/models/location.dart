@@ -1,8 +1,9 @@
+import 'dart:convert';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'package:json_annotation/json_annotation.dart';
-import 'dart:convert';
-import './location_fact.dart';
+
+import 'location_fact.dart';
 import '../endpoint.dart';
 
 part 'location.g.dart';
