@@ -1,17 +1,31 @@
 import 'package:flutter/material.dart';
-import 'styles/styles.dart';
-import 'mocks/mock_location.dart';
+import 'styles.dart';
 import 'models/location.dart';
 
-class LocationDetail extends StatelessWidget {
+class LocationDetail extends StatefulWidget {
   final int locationID;
 
-  LocationDetail(
+  LocationDetail(this.locationID);
+
+  @override
+  createState() => _LocationDetailState(this.locationID);
+}
+
+class _LocationDetailState extends State<LocationDetail> {
+  final int locationID;
+  Location location = Location.blank(); // So UI doesn't encounter nulls
+
+  _LocationDetailState(
       this.locationID); // Constructor now accepts the 'index' of the LocationList selected from the ListView instead of a new class 'location' that is a copy of the MockLocation
 
   @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var location = MockLocation.fetch(this.locationID);
     return Scaffold(
       appBar: AppBar(title: Text(location.name, style: Styles.navBarTitle)),
       body: SingleChildScrollView(
@@ -24,6 +38,16 @@ class LocationDetail extends StatelessWidget {
     );
   }
 
+  loadData() async {
+    final location = await Location.fetchByID(this.locationID);
+
+    if (mounted) {
+      setState(() {
+        this.location = location;
+      });
+    }
+  }
+
   List<Widget> _renderBody(BuildContext context, Location location) {
     var result = <Widget>[];
     result.add(_bannerImage(location.url, 170.0));
@@ -33,7 +57,7 @@ class LocationDetail extends StatelessWidget {
 
   List<Widget> _renderFacts(BuildContext context, Location location) {
     var result = <Widget>[];
-    for (int i = 0; i < location.facts.length; i++) {
+    for (int i = 0; i < (location.facts).length; i++) {
       result.add(_factTitle(location.facts[i].title));
       result.add(_factText(location.facts[i].text));
     }
@@ -41,6 +65,14 @@ class LocationDetail extends StatelessWidget {
   }
 
   Widget _bannerImage(String url, double height) {
+    Image image;
+    try {
+      if (url.isNotEmpty) {
+        image = Image.network(url, fit: BoxFit.fitWidth);
+      }
+    } catch (e) {
+      print('Could not load image $url');
+    }
     return Container(
       constraints: BoxConstraints.tightFor(height: height),
       child: Image.network(url, fit: BoxFit.fitWidth),
