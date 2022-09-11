@@ -5,7 +5,6 @@ void main() {
   test('test /locations and /locations/:id', () async {
     final locations = await Location.fetchAll();
     for (var location in locations) {
-      expect(location.id, greaterThan(0));
       expect(location.name, hasLength(greaterThan(0)));
       expect(location.url, hasLength(greaterThan(0)));
 

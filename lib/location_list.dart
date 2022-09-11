@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'styles/styles.dart';
+import 'styles.dart';
 import 'models/location.dart';
 import 'location_detail.dart';
 
-class LocationList extends StatelessWidget {
-  final List<Location> locations;
+class LocationList extends StatefulWidget {
+  @override
+  createState() => _LocationListState();
+}
 
-  LocationList(this.locations);
+class _LocationListState extends State<LocationList> {
+  List<Location> locations = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +31,20 @@ class LocationList extends StatelessWidget {
     );
   }
 
+  loadData() async {
+    final locations = await Location.fetchAll();
+    setState(() {
+      this.locations = locations;
+    });
+  }
+
   Widget _listViewItemBuilder(BuildContext context, int index) {
-    var locationIndex = this.locations[index];
+    final location = this.locations[index];
     return ListTile(
       contentPadding: EdgeInsets.all(10.0),
-      leading: _itemThumbnail(locationIndex),
-      title: _itemTitle(locationIndex),
-      onTap: () => _navigateToLocationDetail(context, index),
+      leading: _itemThumbnail(location),
+      title: _itemTitle(location),
+      onTap: () => _navigateToLocationDetail(context, location.id),
     );
   }
 
