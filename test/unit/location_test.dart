@@ -1,5 +1,5 @@
 // import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import "dart:convert";
 
 import '../../lib/models/location.dart';
@@ -12,5 +12,13 @@ void main() {
     final locationMap = json.decode(locationJSON) as Map<String, dynamic>;
 
     expect("Arishiyama Bamboo Grove", equals(locationMap['name']));
+
+    final location = Location.fromJson(locationMap);
+
+    expect(location.name, equals(locationMap['name']));
+    expect(location.url, equals(locationMap['url']));
+
+    expect(location.facts[0].title, matches(locationMap['facts'][0]['title']));
+    expect(location.facts[0].text, matches(locationMap['facts'][0]['text']));
   });
 }
