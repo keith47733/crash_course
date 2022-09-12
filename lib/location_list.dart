@@ -1,8 +1,11 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:flutter/material.dart';
+import 'components/location_tile.dart';
 import 'models/location.dart';
 import 'location_detail.dart';
 import 'styles.dart';
+
+const ListItemHeight = 245.0;
 
 class LocationList extends StatefulWidget {
   @override
@@ -61,12 +64,16 @@ class _LocationListState extends State<LocationList> {
 
   Widget _listViewItemBuilder(BuildContext context, int index) {
     final location = this.locations[index];
-    return ListTile(
-      contentPadding: EdgeInsets.all(10.0),
-      leading: _itemThumbnail(this.locations[index]),
-      title: _itemTitle(this.locations[index]),
-      onTap: () => _navigateToLocationDetail(context, location.id),
-    );
+    return GestureDetector(
+        onTap: () => _navigateToLocationDetail(context, location.id),
+        child: Container(
+          height: ListItemHeight,
+          child: Stack(children: [
+            _tileImage(location.url, MediaQuery.of(context).size.width,
+                ListItemHeight),
+            _tileFooter(location),
+          ]),
+        ));
   }
 
   void _navigateToLocationDetail(BuildContext context, int locationID) {
@@ -74,20 +81,32 @@ class _LocationListState extends State<LocationList> {
         MaterialPageRoute(builder: (context) => LocationDetail(locationID)));
   }
 
-  Widget _itemThumbnail(Location location) {
-    if (location.url.isEmpty) {
-      return Container();
-    }
-
+  Widget _tileImage(String url, double width, double height) {
+    Image image;
     try {
-      return Container(
-        constraints: BoxConstraints.tightFor(height: 100.0),
-        child: Image.network(location.url, fit: BoxFit.fitWidth),
-      );
+      image = Image.network(url, fit: BoxFit.cover);
     } catch (e) {
-      print("could not load image ${location.url}");
-      return Container();
+      print("could not load image $url");
     }
+    return Container(
+      constraints: BoxConstraints.expand(),
+      child: Image.network(url, fit: BoxFit.fitWidth),
+    );
+  }
+
+  Widget _tileFooter(Location location) {
+    final info = LocationTile(location: location, isDarkTheme: true);
+    final overlay = Container(
+      padding: EdgeInsets.symmetric(
+          vertical: 5.0, horizontal: Styles.horizontalPaddingDefault),
+      decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
+      child: info,
+    );
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [overlay],
+    );
   }
 
   Widget _itemTitle(Location location) {
