@@ -4,7 +4,7 @@ import '../models/location_fact.dart';
 mixin MockLocation implements Location {
   static final List<Location> items = [
     Location(
-        id: 0,
+        id: 1,
         name: 'Arashiyama Bamboo Grove',
         url:
             'https://cdn-images-1.medium.com/max/2000/1*vdJuSUKWl_SA9Lp-32ebnA.jpeg',
@@ -16,152 +16,77 @@ mixin MockLocation implements Location {
           LocationFact(
               title: 'How to Get There',
               text:
-                  'Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports. Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports. Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports. Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports.')
-        ]),
-    Location(
-        id: 1,
-        name: 'Mount Fuji',
-        url:
-            'https://img3.goodfon.ru/original/1920x1080/a/a5/fuji-peizazh-iaponiia-gora-tsvety-nebo.jpg',
-        facts: <LocationFact>[
-          LocationFact(
-              title: 'Summary',
-              text:
-                  'While we could go on about the ethereal glow and seemingly endless heights of this bamboo grove on the outskirts of Kyoto, the sight\'s pleasures extend beyond the visual realm'),
-          LocationFact(
-              title: 'How to Get There',
-              text:
                   'Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports.')
-        ]),
+        ],
+        tourPackageName: '',
+        userItinerarySummary: ''),
     Location(
         id: 2,
-        name: 'Kiyomizu-dera',
+        name: 'Mount Fuji',
         url:
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Kiyomizu-dera_in_Kyoto-r.jpg/800px-Kiyomizu-dera_in_Kyoto-r.jpg',
+            'https://pdd5k477ulx482prl3bm3by1-wpengine.netdna-ssl.com/wp-content/uploads/2019/04/Mt-Fuji-Golf-Fairway.jpg',
         facts: <LocationFact>[
           LocationFact(
               title: 'Summary',
               text:
-                  'While we could go on about the ethereal glow and seemingly endless heights of this bamboo grove on the outskirts of Kyoto, the sight\'s pleasures extend beyond the visual realm'),
+                  'Japan’s Mt. Fuji is an active volcano about 100 kilometers southwest of Tokyo. Commonly called “Fuji-san,” it’s the country’s tallest peak, at 3,776 meters. A pilgrimage site for centuries, it’s considered one of Japan’s 3 sacred mountains, and summit hikes remain a popular activity. Its iconic profile is the subject of numerous works of art, notably Edo Period prints by Hokusai and Hiroshige.'),
           LocationFact(
-              title: 'How to Get There',
+              title: 'Did You Know',
               text:
-                  'Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports.')
-        ]),
+                  'There are three cities that surround Mount Fuji: Gotemba, Fujiyoshida and Fujinomiya.')
+        ],
+        tourPackageName: '',
+        userItinerarySummary: ''),
     Location(
         id: 3,
-        name: 'Kinkaku-ji',
+        name: 'Kiyomizu-dera',
         url:
-            'https://www.asisbiz.com/Japan/Kinkaku-ji/images/0-Postcards-Kinkaku-ji-Winter.jpg',
+            'https://media4.trover.com/T/5a97b80c8beb7fbf57002ffe/fixedw_large_4x.jpg',
         facts: <LocationFact>[
           LocationFact(
               title: 'Summary',
               text:
-                  'While we could go on about the ethereal glow and seemingly endless heights of this bamboo grove on the outskirts of Kyoto, the sight\'s pleasures extend beyond the visual realm'),
+                  'Kiyomizu-dera, officially Otowa-san Kiyomizu-dera, is an independent Buddhist temple in eastern Kyoto. The temple is part of the Historic Monuments of Ancient Kyoto UNESCO World Heritage site.'),
           LocationFact(
-              title: 'How to Get There',
-              text:
-                  'Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports.')
-        ]),
+              title: 'Architectural Style',
+              text: 'Japanese Buddhist architecture')
+        ],
+        tourPackageName: '',
+        userItinerarySummary: ''),
     Location(
         id: 4,
-        name: 'Odaiba',
-        url: 'https://www.yhunter.ru/wp-content/uploads/2015/06/DSC1876.jpg',
+        name: 'Kinkaku-ji',
+        url:
+            'https://cdn-images-1.medium.com/max/1600/1*sncLZ1eNLYk3s-v76nJn8w.jpeg',
         facts: <LocationFact>[
           LocationFact(
               title: 'Summary',
               text:
-                  'While we could go on about the ethereal glow and seemingly endless heights of this bamboo grove on the outskirts of Kyoto, the sight\'s pleasures extend beyond the visual realm'),
+                  'Kinkaku-ji, officially named Rokuon-ji, is a Zen Buddhist temple in Kyoto, Japan. It is one of the most popular buildings in Japan, attracting a large number of visitors annually.'),
           LocationFact(
-              title: 'How to Get There',
+              title: 'Did You Know',
               text:
-                  'Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports.')
-        ]),
-    // Additional data to test scrolling
+                  'The Golden Pavilion is set in a magnificent Japanese strolling garden.')
+        ],
+        tourPackageName: '',
+        userItinerarySummary: ''),
     Location(
         id: 5,
-        name: 'Odaiba2',
-        url: 'https://www.yhunter.ru/wp-content/uploads/2015/06/DSC1876.jpg',
+        name: 'Odaiba',
+        url:
+            'https://jp.openrice.com/userphoto/Article/0/1/0000CM2AF2F38CD85AB341j.jpg',
         facts: <LocationFact>[
           LocationFact(
               title: 'Summary',
               text:
-                  'While we could go on about the ethereal glow and seemingly endless heights of this bamboo grove on the outskirts of Kyoto, the sight\'s pleasures extend beyond the visual realm'),
+                  'Accessed via the Rainbow Bridge or the futuristic Yurikamome train, Odaiba is a high-tech entertainment hub on an artificial island in Tokyo Bay. Visitors head to the beach at Seaside Park, enjoy Mt. Fuji views from the Daikanransha Ferris wheel, and interact with robots at the Miraikan science museum. Malls include Aqua City and the Venice-themed VenusFort, and there are sushi bars with views along the waterfront.'),
           LocationFact(
-              title: 'How to Get There',
+              title: 'Did You Know',
               text:
-                  'Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports.')
-        ]),
-    Location(
-        id: 6,
-        name: 'Odaiba3',
-        url: 'https://www.yhunter.ru/wp-content/uploads/2015/06/DSC1876.jpg',
-        facts: <LocationFact>[
-          LocationFact(
-              title: 'Summary',
-              text:
-                  'While we could go on about the ethereal glow and seemingly endless heights of this bamboo grove on the outskirts of Kyoto, the sight\'s pleasures extend beyond the visual realm'),
-          LocationFact(
-              title: 'How to Get There',
-              text:
-                  'Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports.')
-        ]),
-    Location(
-        id: 7,
-        name: 'Odaiba4',
-        url: 'https://www.yhunter.ru/wp-content/uploads/2015/06/DSC1876.jpg',
-        facts: <LocationFact>[
-          LocationFact(
-              title: 'Summary',
-              text:
-                  'While we could go on about the ethereal glow and seemingly endless heights of this bamboo grove on the outskirts of Kyoto, the sight\'s pleasures extend beyond the visual realm'),
-          LocationFact(
-              title: 'How to Get There',
-              text:
-                  'Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports.')
-        ]),
-    Location(
-        id: 9,
-        name: 'Odaiba5',
-        url: 'https://www.yhunter.ru/wp-content/uploads/2015/06/DSC1876.jpg',
-        facts: <LocationFact>[
-          LocationFact(
-              title: 'Summary',
-              text:
-                  'While we could go on about the ethereal glow and seemingly endless heights of this bamboo grove on the outskirts of Kyoto, the sight\'s pleasures extend beyond the visual realm'),
-          LocationFact(
-              title: 'How to Get There',
-              text:
-                  'Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports.')
-        ]),
-    Location(
-        id: 10,
-        name: 'Odaiba6',
-        url: 'https://www.yhunter.ru/wp-content/uploads/2015/06/DSC1876.jpg',
-        facts: <LocationFact>[
-          LocationFact(
-              title: 'Summary',
-              text:
-                  'While we could go on about the ethereal glow and seemingly endless heights of this bamboo grove on the outskirts of Kyoto, the sight\'s pleasures extend beyond the visual realm'),
-          LocationFact(
-              title: 'How to Get There',
-              text:
-                  'Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports.')
-        ]),
-    Location(
-        id: 11,
-        name: 'Odaiba7',
-        url: 'https://www.yhunter.ru/wp-content/uploads/2015/06/DSC1876.jpg',
-        facts: <LocationFact>[
-          LocationFact(
-              title: 'Summary',
-              text:
-                  'While we could go on about the ethereal glow and seemingly endless heights of this bamboo grove on the outskirts of Kyoto, the sight\'s pleasures extend beyond the visual realm'),
-          LocationFact(
-              title: 'How to Get There',
-              text:
-                  'Kyoto airport, with several terminals, is located 16 kilometres south of the city and is also known as Kyoto. Kyoto can also be reached by transport links from other regional airports.')
-        ]),
+                  'The pedestrian path begins a short walk from Shibaura-futo Station along the Yurikamome on the "Tokyo side" of the bridge, while Odaiba Kaihinkoen Station is the nearest station on the "Odaiba side."')
+        ],
+        tourPackageName: '',
+        userItinerarySummary: ''),
   ];
 
   static Location fetchAny() {
