@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'components/banner_image.dart';
+import 'components/default_app_bar.dart';
 import 'components/location_tile.dart';
 import 'models/location.dart';
 import 'location_detail.dart';
@@ -25,7 +27,7 @@ class _LocationListState extends State<LocationList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Locations", style: Styles.navBarTitle)),
+        appBar: DefaultAppBar(),
         body: RefreshIndicator(
             onRefresh: loadData,
             child: Column(children: [
@@ -69,8 +71,7 @@ class _LocationListState extends State<LocationList> {
         child: Container(
           height: ListItemHeight,
           child: Stack(children: [
-            _tileImage(location.url, MediaQuery.of(context).size.width,
-                ListItemHeight),
+            BannerImage(url: location.url, height: 300.0),
             _tileFooter(location),
           ]),
         ));
@@ -79,19 +80,6 @@ class _LocationListState extends State<LocationList> {
   void _navigateToLocationDetail(BuildContext context, int locationID) {
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => LocationDetail(locationID)));
-  }
-
-  Widget _tileImage(String url, double width, double height) {
-    Image image;
-    try {
-      image = Image.network(url, fit: BoxFit.cover);
-    } catch (e) {
-      print("could not load image $url");
-    }
-    return Container(
-      constraints: BoxConstraints.expand(),
-      child: Image.network(url, fit: BoxFit.fitWidth),
-    );
   }
 
   Widget _tileFooter(Location location) {
@@ -107,9 +95,5 @@ class _LocationListState extends State<LocationList> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [overlay],
     );
-  }
-
-  Widget _itemTitle(Location location) {
-    return Text('${location.name}', style: Styles.textDefault);
   }
 }
