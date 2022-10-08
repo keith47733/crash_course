@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+
 import '../models/location.dart';
 import '../styles.dart';
 
-const LocationTileHeaight = 100.0;
+const locationTileHeaight = 100.0;
 
 class LocationTile extends StatelessWidget {
   final Location location;
   final bool isDarkTheme;
 
-  LocationTile({required this.location, required this.isDarkTheme});
+  const LocationTile({Key? key, required this.location, required this.isDarkTheme}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,21 +18,20 @@ class LocationTile extends StatelessWidget {
     final caption = location.tourPackageName.toUpperCase();
 
     return Container(
-      padding: EdgeInsets.all(0.0),
-      height: LocationTileHeaight,
+      padding: const EdgeInsets.all(0.0),
+      height: locationTileHeaight,
       child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('$title',
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                style: this.isDarkTheme
-                    ? Styles.locationTileTitleDark
-                    : Styles.locationTileTitleLight),
-            Text('$subTitle', style: Styles.locationTileSubTitle),
-            Text('$caption', style: Styles.locationTileCaption),
-          ]),
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: isDarkTheme ? Styles.locationTileTitleDark : Styles.locationTileTitleLight),
+          Text(subTitle, style: Styles.locationTileSubTitle),
+          Text(caption, style: Styles.locationTileCaption),
+        ],
+      ),
     );
   }
 }

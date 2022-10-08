@@ -7,7 +7,7 @@ class DefaultAppBar extends AppBar {
       Text('Tourism & Co.'.toUpperCase(), style: Styles.navBarTitle);
 
   @override
-  final IconThemeData iconTheme = IconThemeData(color: Colors.black);
+  final IconThemeData iconTheme = const IconThemeData(color: Colors.black);
 
   @override
   final Color backgroundColor = Colors.white;
@@ -17,4 +17,6 @@ class DefaultAppBar extends AppBar {
 
   @override
   final double elevation = 5.0;
+
+  DefaultAppBar({Key? key}) : super(key: key);
 }

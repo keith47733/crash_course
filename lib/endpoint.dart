@@ -1,8 +1,7 @@
 import 'dart:core';
 
 class Endpoint {
-  // NOTE: not realistic! we'll configure environment-specific variables in a soon to be
-  // upcoming lesson
+  // NOTE: not realistic! we'll configure environment-specific variables in a soon to be upcoming lesson
   static const apiScheme = 'https';
   static const apiHost = 'fluttercrashcourse.com';
   static const prefix = '/api/v1';

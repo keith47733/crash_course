@@ -4,7 +4,7 @@ class BannerImage extends StatelessWidget {
   final String url;
   final double height;
 
-  BannerImage({required this.url, required this.height});
+  const BannerImage({Key? key, required this.url, required this.height}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

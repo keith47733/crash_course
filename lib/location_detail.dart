@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import 'components/banner_image.dart';
 import 'components/default_app_bar.dart';
 import 'components/location_tile.dart';
 import 'models/location.dart';
 import 'styles.dart';
 
-const BannerImageHeight = 300.0;
-const BodyVerticalPadding = 20.0;
-const FooterHeight = 100.0;
+const bannerImageHeight = 300.0;
+const bodyVerticalPadding = 20.0;
+const footerHeight = 100.0;
 
 class LocationDetail extends StatefulWidget {
   final int locationID;
-  LocationDetail(this.locationID);
+  const LocationDetail(this.locationID, {Key? key}) : super(key: key);
 
   @override
-  createState() => _LocationDetailState(this.locationID);
+  createState() => _LocationDetailState(locationID);
 }
 
 class _LocationDetailState extends State<LocationDetail> {
@@ -41,7 +42,7 @@ class _LocationDetailState extends State<LocationDetail> {
   }
 
   loadData() async {
-    final location = await Location.fetchByID(this.locationID);
+    final location = await Location.fetchByID(locationID);
 
     if (mounted) {
       setState(() {
@@ -53,7 +54,7 @@ class _LocationDetailState extends State<LocationDetail> {
   Widget _renderBody(BuildContext context, Location location) {
     var result = <Widget>[];
     result.add(
-      BannerImage(url: location.url, height: BannerImageHeight),
+      BannerImage(url: location.url, height: bannerImageHeight),
     );
     result.add(_renderHeader());
     result.addAll(_renderFacts(context, location));
@@ -67,10 +68,8 @@ class _LocationDetailState extends State<LocationDetail> {
 
   Widget _renderHeader() {
     return Container(
-        padding: EdgeInsets.symmetric(
-            vertical: BodyVerticalPadding,
-            horizontal: Styles.horizontalPaddingDefault),
-        child: LocationTile(location: this.location, isDarkTheme: false));
+        padding: const EdgeInsets.symmetric(vertical: bodyVerticalPadding, horizontal: Styles.horizontalPaddingDefault),
+        child: LocationTile(location: location, isDarkTheme: false));
   }
 
   List<Widget> _renderFacts(BuildContext context, Location location) {
@@ -84,42 +83,39 @@ class _LocationDetailState extends State<LocationDetail> {
 
   Widget _sectionTitle(String text) {
     return Container(
-        padding: EdgeInsets.fromLTRB(Styles.horizontalPaddingDefault, 25.0,
-            Styles.horizontalPaddingDefault, 0.0),
-        child: Text(text.toUpperCase(),
-            textAlign: TextAlign.left, style: Styles.textHeader1));
+        padding: const EdgeInsets.fromLTRB(Styles.horizontalPaddingDefault, 25.0, Styles.horizontalPaddingDefault, 0.0),
+        child: Text(text.toUpperCase(), textAlign: TextAlign.left, style: Styles.textHeader1));
   }
 
   Widget _sectionText(String text) {
     return Container(
-        padding: EdgeInsets.symmetric(
-            vertical: 10.0, horizontal: Styles.horizontalPaddingDefault),
+        padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: Styles.horizontalPaddingDefault),
         child: Text(text, style: Styles.textDefault));
   }
 
   Widget _renderFooter(BuildContext context, Location location) {
     return Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            decoration: BoxDecoration(color: Colors.white.withOpacity(0.5)),
-            height: FooterHeight,
-            child: Container(
-                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
-                child: _renderBookButton()),
-          )
-        ]);
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Container(
+          decoration: BoxDecoration(color: Colors.white.withOpacity(0.5)),
+          height: footerHeight,
+          child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0), child: _renderBookButton()),
+        )
+      ],
+    );
   }
 
   Widget _renderBookButton() {
     return TextButton(
-      child: Text('Book'.toUpperCase()),
+      onPressed: _handleBookPress,
       style: TextButton.styleFrom(
         backgroundColor: Styles.accentColor,
         foregroundColor: Styles.textColorBright,
       ),
-      onPressed: _handleBookPress,
+      child: Text('Book'.toUpperCase()),
     );
   }
 
@@ -133,6 +129,6 @@ class _LocationDetailState extends State<LocationDetail> {
   }
 
   Widget _renderBottomSpacer() {
-    return Container(height: FooterHeight);
+    return Container(height: footerHeight);
   }
 }
